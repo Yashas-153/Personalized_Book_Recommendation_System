@@ -8,3 +8,5 @@ class Book:
         self.year = year
         self.publisher = publisher
     
+    def rate_book(self,ISBN,rating):
+        

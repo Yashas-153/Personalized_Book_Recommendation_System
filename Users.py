@@ -1,5 +1,6 @@
 import uuid
-
+import pandas as pd
+import Books
 class User:
     def __init__(self, age):
         self.user_id = int(uuid.uuid4())  # Generate a unique user ID
@@ -7,9 +8,10 @@ class User:
         self.books_rated = {}  # Dictionary to store books and their ratings
         self.activities = {} # Dictionary that stores their acitivity in the app
 
-    def see_and_rate_book(self, book_title, rating):
-        self.books_rated[book_title] = rating
-        print(f"User {self.user_id} rated '{book_title}' with a rating of {rating}")
+    def see_and_rate_book(self, book_title,ISBN, rating):
+        Books.
+        
+        
         
 # Example usageCopy
 user1 = User(age=25)
