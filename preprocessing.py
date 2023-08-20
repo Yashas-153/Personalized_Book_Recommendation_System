@@ -19,6 +19,7 @@ warnings.filterwarnings("ignore")
 
 books = pd.read_csv("Datasets/Books.csv")
 ratings = pd.read_csv("Datasets/Ratings.csv")
+ratings = ratings[ratings["Book-Rating"]!= 0]
 users = pd.read_csv("Datasets/Users.csv")
 books = books.set_axis(["ISBN","Title","Author","Year","Publisher","Image_URL_S","Image_URL_M","Image_URL_L"], axis = "columns")
 ratings_with_name = books.merge(ratings,on = "ISBN").drop(["Author","Year","Publisher","Image_URL_M","Image_URL_L"],axis = 1)
@@ -45,7 +46,7 @@ def preprocessing(text):
 def get_books_data():
     books_df = books[["ISBN","Title","Author","Publisher","Image_URL_S"]]
     books_df = books_df.merge(ratings,on = "ISBN")
-    top_rated_books = books_df.groupby("Title").count()["Book-Rating"]  > 50
+    top_rated_books = books_df.groupby("Title").count()["Book-Rating"]  > 8
     books_df = books_df[books_df["Title"].isin(top_rated_books[top_rated_books].index)].drop_duplicates(subset = ["Title"], keep = "first")
     books_df["Features"] = books_df["Title"] + " " + books_df["Author"] + " " + books_df["Publisher"]
 
@@ -62,10 +63,10 @@ def get_books_data():
 
    
 def get_memory_based_pt():
-    x = ratings_with_name.groupby('User-ID').count()['Book-Rating'] > 200
+    x = ratings_with_name.groupby('User-ID').count()['Book-Rating'] > 65
     top_users_rating = ratings_with_name[ratings_with_name["User-ID"].isin(x[x].index)]
 
-    y = top_users_rating.groupby('Title').count()['Book-Rating'] >= 50
+    y = top_users_rating.groupby('Title').count()['Book-Rating'] >= 15
     final_ratings = top_users_rating[top_users_rating["Title"].isin(y[y].index)]
 
     pivot_table = final_ratings.pivot_table(index='Title',columns='User-ID',values='Book-Rating')
@@ -73,10 +74,9 @@ def get_memory_based_pt():
 
     return pivot_table.T
 
-def get_model_based_pt():
-
+def get_model_based_pt():   
     users_pt = get_memory_based_pt()
-    nmf_model = pickle.load(open("nmf_model.pkl","rb"))
+    nmf_model = pickle.load(open("Models/nmf_model.pkl","rb"))
     W = nmf_model.transform(users_pt)
     print("shape of W is ",W.shape)
     H = nmf_model.components_
