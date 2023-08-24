@@ -20,7 +20,7 @@ tvectorizer = TfidfVectorizer(max_features= 20000)
     
 tfidf_mat = tvectorizer.fit_transform(books_data["Features"]) 
 users_pt = prep.get_memory_based_pt()
-books_title_list = books_data['Title'].to_list() #creating list of movies and tv shows
+books_title_list = books_data['Title'].to_list() 
     
 ratings_with_name = books.merge(ratings,on = "ISBN").drop(["Author","Year","Publisher","Image_URL_S","Image_URL_L"],axis = 1)
 print("done with all data frames")
@@ -80,14 +80,14 @@ def recommend_from_past_pref_by_name(user_id):
     for book_read in prev_read_books:
         index = -1
         try:
-            index = books_title_list.index(book_read)         #finds the index of the input title in the programme_list.
+            index = books_title_list.index(book_read)         
         except ValueError:
             continue
         print("index is" ,index)
-        sim_score = list(enumerate(cosine_sim[index])) #creates a list of tuples containing the similarity score and index of the input title and all other programmes in the dataset.
+        sim_score = list(enumerate(cosine_sim[index])) 
         
-        sim_score = sorted(sim_score, key= lambda x: x[1], reverse=True)[1:6]  #sorts the list of tuples by similarity score in descending order.
-        recommend_index = [i[0] for i in sim_score]  #selecting index of recommended movies
+        sim_score = sorted(sim_score, key= lambda x: x[1], reverse=True)[1:6]  
+        recommend_index = [i[0] for i in sim_score] 
         rec_books = books_data['Title'].iloc[recommend_index]
         rec_scores = [round(i[1],4) for i in sim_score]
         
@@ -97,7 +97,7 @@ def recommend_from_past_pref_by_name(user_id):
             print("books is ",rec_book)
             cover_images.append(books[books["Title"] == rec_book]["Image_URL_M"].values[0])
             
-            avg_ratings.append(round(popular_books[popular_books["Title"] == rec_book]["avg_rating"].sort_values(ascending= False).values[0],2))
+            avg_ratings.append(round(popular_books[popular_books["Title"] == rec_book]["avg_rating"].sort_values(ascending= False).values[0],1))
             
         df = pd.DataFrame(list(zip(rec_books,rec_scores, avg_ratings,cover_images)), columns=['Recommended_title','Similarity_score(0-1)','avg_rating','Image_URL_M'])
         top_recom_books = pd.concat([top_recom_books,df])
@@ -225,9 +225,9 @@ def get_recommendation(user_id,type = 0):
         A dataframe of recommended books.
 
     """
-    print("called get_recommendation")
-    user_id = int(user_id)
-    try :
+    try:
+        print("called get_recommendation")
+        user_id = int(user_id)
         index = np.where(users_pt.index == user_id)[0][0]
         recom_by_sim_title_past_df =  recommend_from_past_pref_by_name(user_id)
         if int(type) == 0:
@@ -240,8 +240,9 @@ def get_recommendation(user_id,type = 0):
             subset =["Recommended_title"],keep = "first").reset_index().sort_values("Similarity_score(0-1)",ascending= False)
         print("returned final_df")
         return final_df
+    
     except IndexError:
-
+        print("called top rated")
         return recommend_top_rated_books()
 
 

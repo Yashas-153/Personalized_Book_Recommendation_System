@@ -41,7 +41,6 @@ def preprocessing(text):
     return text
 
 
-#ratings.groupby(by = "User-ID").sum().sort_values(by = "Book-Rating", ascending = False).head(10)
 
 def get_books_data():
     books_df = books[["ISBN","Title","Author","Publisher","Image_URL_S"]]
