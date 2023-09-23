@@ -38,7 +38,7 @@
 
 <h2>Acknowledgments</h2>
 
-<p>I would like to express my gratitude to <a href="https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset">insert_dataset_source</a> for providing the dataset used in this project. This project would not have been possible without their valuable contribution.</p>
+<p>I would like to express my gratitude to <a href="https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset">Book Recommendation System Dataset</a> for providing the dataset used in this project. This project would not have been possible without their valuable contribution.</p>
 
 <p>Feel free to explore, contribute, and make this Book Recommendation System even more awesome! Happy reading!</p>
 
