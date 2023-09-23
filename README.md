@@ -1,45 +1,44 @@
 # Recommendation_System
-Welcome to the Book Recommendation System repository! In this project, I have developed two exciting variants of a recommendation system for books using a rich dataset. Whether you're an avid reader or just looking for your next great read, these recommendation systems have got you covered.
 
-Table of Contents
-Introduction
-Variants
-Getting Started
-Usage
-Dataset
-Acknowledgments
-Introduction
-Are you tired of scrolling through endless book lists, unsure of what to read next? Our Book Recommendation System is here to help! This project leverages the power of data to provide you with personalized book recommendations based on your preferences and reading history.
+<p>In this project, I have developed two exciting variants of a recommendation system for books using a rich dataset. This is a personalized recommendation system which leveraages user data and recommends them books accordingly. If the user is a new user then it will recommend them top 100 rated books.</p>
 
-Variants
-Memory-Based Recommendation: This variant relies on user-item interactions to make recommendations. It uses collaborative filtering techniques to find books that similar users have enjoyed. If you're looking for books based on user preferences and behavior, this is the option for you.
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#variants">Variants</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#dataset">Dataset</a></li>
+  <li><a href="#acknowledgments">Acknowledgments</a></li>
+</ul>
 
-Model-Based Recommendation: In this variant, we've implemented a sophisticated recommendation model. It goes beyond user-item interactions and uses advanced machine learning algorithms to predict your book preferences. If you're interested in discovering new books based on your reading history, this is the choice for you.
+<h2>Introduction</h2>
 
-Getting Started
-To get started with the Book Recommendation System, follow these simple steps:
+<p>Are you tired of scrolling through endless book lists, unsure of what to read next? Our Book Recommendation System is here to help! This project leverages the power of data to provide you with personalized book recommendations based on your preferences and reading history.</p>
 
-Clone this repository to your local machine using git clone.
+<h2>Variants</h2>
 
-Install the required dependencies listed in the requirements.txt file using pip install -r requirements.txt.
+<ol>
+  <li><strong>Memory-Based Recommendation:</strong> This variant relies on user-item interactions to make recommendations. It uses collaborative filtering techniques to find books that similar users have enjoyed.</li>
+  <li><strong>Model-Based Recommendation:</strong> In this variant, I've implemented a sophisticated recommendation model. It goes beyond user-item interactions and uses matrix factorisation  to predict your book preferences. </li>
+</ol>
 
-Explore the code for both memory-based and model-based recommendation systems in their respective folders.
+<h2>Getting Started</h2>
 
-Usage
-Memory-Based Recommendation:
+<p>To get started with the Book Recommendation System, follow these simple steps:</p>
 
-Navigate to the memory_based folder.
-Run the memory_based_recommendation.py script.
-Input your preferences, and the system will suggest books based on user similarity.
-Model-Based Recommendation:
+<ol>
+  <li>Clone this repository to your local machine using <code>git clone</code>.</li>
+  <li>Install the required dependencies listed in the <code>requirements.txt</code> file using <code>pip install -r requirements.txt</code>.</li>
+  <li>Explore the code for both memory-based and model-based recommendation systems in their respective folders.</li>
+</ol>
 
-Navigate to the model_based folder.
-Run the model_based_recommendation.py script.
-The model will analyze your reading history and suggest books tailored to your taste.
-Dataset
-The recommendation system is built using a comprehensive dataset containing book details, user ratings, and more. You can find the dataset we used here: Link to Dataset.
+<h2>Dataset</h2>
 
-Acknowledgments
-I would like to express my gratitude to [insert_dataset_source] for providing the dataset used in this project. This project would not have been possible without their valuable contribution.
+<p>The recommendation system is built using a comprehensive dataset containing book details, user ratings, and more. You can find the dataset we used here: <a href="insert_dataset_link_here">Link to Dataset</a>.</p>
 
-Feel free to explore, contribute, and make this Book Recommendation System even more awesome! Happy reading!
+<h2>Acknowledgments</h2>
+
+<p>I would like to express my gratitude to <a href="https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset">insert_dataset_source</a> for providing the dataset used in this project. This project would not have been possible without their valuable contribution.</p>
+
+<p>Feel free to explore, contribute, and make this Book Recommendation System even more awesome! Happy reading!</p>
+
